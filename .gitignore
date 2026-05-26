@@ -32,3 +32,5 @@ notebooks/.ipynb_checkpoints/
 # OS
 .DS_Store
 Thumbs.db
+# json
+gen-lang-client-0973601796-02c93b76e5b7.json
