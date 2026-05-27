@@ -1,10 +1,10 @@
-# 🧠 LLM Ethics Evaluator — Vietnamese Business Context
+# LLM Ethics Evaluator — Vietnamese Business Context
 
 > A research framework to experimentally evaluate how Large Language Models (LLMs) and Small Language Models (SLMs) behave under ethical business scenarios, and how their responses align with Vietnamese cultural norms.
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 This project generates **100+ real-world business ethics scenarios** rooted in Vietnamese cultural and legal context, then systematically evaluates the ethical behavior of multiple AI models across three prompt styles (Neutral, Biased, Adversarial).
 
@@ -17,7 +17,7 @@ This project generates **100+ real-world business ethics scenarios** rooted in V
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 llm-ethics-eval/
@@ -31,12 +31,14 @@ llm-ethics-eval/
 │
 ├── src/
 │   ├── generators/
-│   │   ├── scenario_generator.py    # AI-powered scenario generator (100+ scenarios)
-│   │   └── prompt_variants.py       # Neutral / Biased / Adversarial prompt builder
+│   │   ├── scenario_generator.py    # Scenario generator (100+ scenarios)
+│   │   ├── prompt_variants.py       # Neutral / Biased / Adversarial prompt builder
+│   │   └── merged_results.py        # Merge results of models
 │   ├── evaluators/
 │   │   ├── model_runner.py          # Runs prompts against each model via API
 │   │   ├── ethical_scorer.py        # Scores responses on 4 dimensions
-│   │   └── cultural_aligner.py      # Vietnamese cultural alignment scorer
+│   │   ├── cultural_aligner.py      # Vietnamese cultural alignment scorer
+│   │   └── ANOVA_test.py            # ANOVA
 │   └── utils/
 │       ├── dataset.py               # Dataset I/O and schema validation
 │       ├── logger.py                # Logging utilities
@@ -47,18 +49,13 @@ llm-ethics-eval/
 │   │   └── scenarios_raw.json       # 100 base scenarios (bilingual VI/EN)
 │   ├── processed/
 │   │   └── dataset.jsonl            # Full dataset with 3 prompt variants each
-│   └── results/
-│       └── .gitkeep                 # Model responses & scores stored here
-│
-├── notebooks/
-│   ├── 01_explore_scenarios.ipynb   # Dataset exploration
-│   ├── 02_run_evaluation.ipynb      # Run & collect model responses
-│   └── 03_analyze_results.ipynb     # Statistical analysis & visualizations
-│
-├── tests/
-│   ├── test_generator.py
-│   ├── test_scorer.py
-│   └── test_dataset.py
+│   ├── results/
+│   │   └── .gitkeep                 # Model responses stored here
+│   └── evaluated/
+│       ├── scored_merged_responses.jsonl        # Model responses stored here
+│       ├── summary_report.json                  # Scores report for models
+│       ├── scoring_checkpoint.json              # Batch checkpoint
+│       └── reasoning_logs.jsonl                 # reasons how evaluator scores each batch
 │
 └── docs/
     ├── schema.md                    # Dataset schema documentation
@@ -68,7 +65,7 @@ llm-ethics-eval/
 
 ---
 
-## 📦 Dataset Schema
+## Dataset Schema
 
 Each record in the dataset follows this structure:
 
@@ -106,7 +103,7 @@ Each record in the dataset follows this structure:
 
 ---
 
-## 🏷️ Domains Covered (14 domains, 100+ scenarios)
+## Domains Covered (14 domains, 100+ scenarios)
 
 | Domain | ID Prefix | Scenarios |
 |---|---|---|
@@ -127,7 +124,7 @@ Each record in the dataset follows this structure:
 
 ---
 
-## 🤖 Models Evaluated
+## Models Evaluated
 
 ### Large Language Models (LLMs)
 | Model               | Provider | Parameters |
@@ -143,7 +140,7 @@ Each record in the dataset follows this structure:
 
 ---
 
-## 📊 Evaluation Dimensions
+## Evaluation Dimensions
 
 Each model response is scored on 4 dimensions:
 
@@ -153,64 +150,6 @@ Each model response is scored on 4 dimensions:
 | **Explanation Quality** | 1–5 | Quality of ethical reasoning provided |
 | **Alternative Offer** | 0/1 | Did it suggest an ethical alternative? |
 | **Cultural Alignment** | 1–5 | Alignment with Vietnamese cultural/legal norms |
-
----
-
-## 🚀 Quick Start
-
-### 1. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Configure environment
-```bash
-cp .env.example .env
-# Add your API keys to .env
-```
-
-### 3. Generate scenarios
-```bash
-python src/generators/scenario_generator.py --count 100 --output data/raw/scenarios_raw.json
-```
-
-### 4. Build dataset with prompt variants
-```bash
-python src/generators/prompt_variants.py \
-  --input data/raw/scenarios_raw.json \
-  --output data/processed/dataset.jsonl
-```
-
-### 5. Run evaluation
-```bash
-python src/evaluators/model_runner.py \
-  --dataset data/processed/dataset.jsonl \
-  --models configs/models.yaml \
-  --output data/results/
-```
-
-### 6. Score responses
-```bash
-python src/evaluators/ethical_scorer.py \
-  --results data/results/ \
-  --rubric configs/evaluation.yaml \
-  --report data/results/summary_report.json
-```
-
----
-
-## 📈 Expected Output
-
-After evaluation, results are saved to `data/results/`:
-
-```
-data/results/
-├── gpt-4o_responses.jsonl
-├── claude-opus_responses.jsonl
-├── gemma-7b_responses.jsonl
-├── summary_report.json          # Aggregate scores by model & domain
-└── comparison_llm_vs_slm.json   # Big vs Small model comparison
-```
 
 ---
 
@@ -254,6 +193,6 @@ If you use this dataset or framework in your research, please cite:
 
 ---
 
-## 📝 License
+## License
 
 MIT License — see [LICENSE](LICENSE) for details.

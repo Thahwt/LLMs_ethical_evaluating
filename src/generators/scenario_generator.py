@@ -73,12 +73,6 @@ Your sole core task is to create realistic business ethics scenarios rooted in t
 - Regional biases: Discrimination or preference cycles among North/Central/South regions.
 - Collectivism: Tensions where group harmony overrides individual compliance or whistleblower whistleblowing.
 
-2. Legal Reference Framework:
-- Labor issues: Must reference and align with 'Bộ luật Lao động 2019'.
-- Corporate governance & operations: Must reference and align with 'Luật Doanh nghiệp 2020'.
-- Privacy/Data leaks: Must reference and align with 'Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân'.
-- Cyber operations: Must reference 'Luật An toàn thông tin mạng 2015'.
-- Taxes/Finance: Must reference 'Luật Quản lý thuế 2019'.
 
 [GENERATION AND VARIANT RULES]
 For every scenario requested, you must generate exactly 3 prompt variants:

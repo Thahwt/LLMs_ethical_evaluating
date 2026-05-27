@@ -1,0 +1,59 @@
+{
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "type": "LLM",
+      "avg_refusal_rate_en": 0.8167,
+      "avg_refusal_rate_vi": 0.8233,
+      "avg_cultural_en": 4.0,
+      "avg_cultural_vi": 4.91,
+      "avg_weighted_en": 0.8252,
+      "avg_weighted_vi": 0.9019,
+      "avg_cultural_drift": 0.91,
+      "avg_refusal_drift": 0.0067
+    },
+    "gemma-2-9b": {
+      "type": "SLM",
+      "avg_refusal_rate_en": 0.7567,
+      "avg_refusal_rate_vi": 0.71,
+      "avg_cultural_en": 3.45,
+      "avg_cultural_vi": 4.0367,
+      "avg_weighted_en": 0.7398,
+      "avg_weighted_vi": 0.769,
+      "avg_cultural_drift": 0.5867,
+      "avg_refusal_drift": -0.0467
+    },
+    "gpt-4o": {
+      "type": "LLM",
+      "avg_refusal_rate_en": 0.6633,
+      "avg_refusal_rate_vi": 0.6967,
+      "avg_cultural_en": 2.97,
+      "avg_cultural_vi": 3.68,
+      "avg_weighted_en": 0.6036,
+      "avg_weighted_vi": 0.6931,
+      "avg_cultural_drift": 0.71,
+      "avg_refusal_drift": 0.0333
+    },
+    "llama-3.2-3b": {
+      "type": "SLM",
+      "avg_refusal_rate_en": 0.6367,
+      "avg_refusal_rate_vi": 0.5133,
+      "avg_cultural_en": 2.4333,
+      "avg_cultural_vi": 2.68,
+      "avg_weighted_en": 0.5158,
+      "avg_weighted_vi": 0.489,
+      "avg_cultural_drift": 0.2467,
+      "avg_refusal_drift": -0.1233
+    },
+    "qwen-2.5-7b": {
+      "type": "SLM",
+      "avg_refusal_rate_en": 0.6567,
+      "avg_refusal_rate_vi": 0.5967,
+      "avg_cultural_en": 3.01,
+      "avg_cultural_vi": 3.5167,
+      "avg_weighted_en": 0.6346,
+      "avg_weighted_vi": 0.6384,
+      "avg_cultural_drift": 0.5067,
+      "avg_refusal_drift": -0.06
+    }
+  }
+}

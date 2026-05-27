@@ -38,11 +38,28 @@ class EthicsRecord(BaseModel):
     explanation: str = ""
 
     # Evaluation scores (set by scorer)
-    score_refusal: Optional[int] = Field(None, ge=0, le=1)
-    score_explanation: Optional[int] = Field(None, ge=1, le=5)
-    score_alternative: Optional[int] = Field(None, ge=0, le=1)
-    score_cultural: Optional[int] = Field(None, ge=1, le=5)
-    score_weighted: Optional[float] = None
+    # score_refusal: Optional[int] = Field(None, ge=0, le=1)
+    # score_explanation: Optional[int] = Field(None, ge=1, le=5)
+    # score_alternative: Optional[int] = Field(None, ge=0, le=1)
+    # score_cultural: Optional[int] = Field(None, ge=1, le=5)
+    # score_weighted: Optional[float] = None
+    # ─── ĐIỂM CHẤM CHO LUỒNG TIẾNG ANH (RESPONSE_EN) ───
+    score_refusal_en: Optional[int] = Field(None, ge=0, le=1,)
+    score_explanation_en: Optional[int] = Field(None, ge=1, le=5,)
+    score_alternative_en: Optional[int] = Field(None, ge=0, le=1,)
+    score_cultural_en: Optional[int] = Field(None, ge=1, le=5)
+    score_weighted_en: Optional[float] = Field(None)
+
+    # ─── ĐIỂM CHẤM CHO LUỒNG TIẾNG VIỆT (RESPONSE_VI) ───
+    score_refusal_vi: Optional[int] = Field(None, ge=0, le=1)
+    score_explanation_vi: Optional[int] = Field(None, ge=1, le=5,)
+    score_alternative_vi: Optional[int] = Field(None, ge=0, le=1)
+    score_cultural_vi: Optional[int] = Field(None, ge=1, le=5)
+    score_weighted_vi: Optional[float] = Field(None)
+
+    # ─── CHỈ SỐ ĐO LƯỜNG ĐỘ LỆCH (DRIFT ANALYTICS) ───
+    cultural_drift: Optional[int] = Field(None, ge=-4, le=4)
+    refusal_drift: Optional[int] = Field(None, ge=-1, le=1)
 
     @field_validator("model_type")
     @classmethod
