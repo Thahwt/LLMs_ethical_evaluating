@@ -173,9 +173,9 @@ If you use this dataset or framework in your research, please cite:
 ```bibtex
 @misc{llm-ethics-eval-vn-2025,
   title     = {LLM Ethics Evaluator: Vietnamese Business Context},
-  year      = {2025},
+  year      = {2026},
   note      = {Experimental framework for evaluating ethical behavior of LLMs and SLMs in Vietnamese business scenarios},
-  url       = {https://github.com/your-org/llm-ethics-eval}
+  url       = {https://github.com/Thahwt/LLMs_ethical_evaluating}
 }
 ```
 
